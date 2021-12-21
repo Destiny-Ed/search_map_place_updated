@@ -51,9 +51,12 @@ class MapSampleState extends State<MapSample> {
               apiKey: apiKEY,
               onSelected: (place) async {
                 final geolocation = await place.geolocation;
-                final GoogleMapController controller = await _mapController.future;
-                controller.animateCamera(CameraUpdate.newLatLng(geolocation.coordinates));
-                controller.animateCamera(CameraUpdate.newLatLngBounds(geolocation.bounds, 0));
+                final GoogleMapController controller =
+                    await _mapController.future;
+                controller.animateCamera(
+                    CameraUpdate.newLatLng(geolocation.coordinates));
+                controller.animateCamera(
+                    CameraUpdate.newLatLngBounds(geolocation.bounds, 0));
               },
             ),
           ),

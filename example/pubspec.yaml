@@ -1,13 +1,13 @@
-name: search_map_place_example
-description: Examples for the Search_map_place Package
+name: search_map_place_updated_example
+description: Examples for the search_map_place_updated Package
 author: Lucas Bernardi <lucasbernardi.23@gmail.com>
-homepage: https://github.com/Bernardi23/search_map_place
+homepage: https://github.com/Bernardi23/search_map_place_updated
 
 environment:
   sdk: ">=2.5.2 <3.0.0"
 
 dependencies:
-  search_map_place:
+  search_map_place_updated:
   flutter_polyline_points:
   flutter:
     sdk: flutter

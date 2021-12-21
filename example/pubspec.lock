@@ -123,10 +123,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
-  search_map_place:
+  search_map_place_updated:
     dependency: "direct main"
     description:
-      name: search_map_place
+      name: search_map_place_updated
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"

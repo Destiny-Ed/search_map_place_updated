@@ -1,9 +1,9 @@
-# search_map_place
+# search_map_place_updated
 
 This is a Flutter package that uses the Google Maps API to make a TextField that tries to autocomplete places as the user types, with simple smooth animations, providing a nice UI and UX.
 This will also provide great information about the user selected place, like the coordinates, the bounds to determine the zoom of the GoogleMap widget, and so on.
 
-<img src="./example/search_map_place_example.gif" alt="example" width="300"/>
+<img src="./example/search_map_place_updated_example.gif" alt="example" width="300"/>
 
 > This is an example of what can be done using this package. To see the source code, check the examples folder.
 
@@ -13,7 +13,7 @@ To install, add it to your `pubspec.yaml` file:
 
 ```
 dependencies:
-    search_map_place: <latest>
+    search_map_place_updated: <latest>
 ```
 
 After that, make sure you have the following APIs activated in your Google Cloud Platform:
@@ -24,7 +24,7 @@ After that, make sure you have the following APIs activated in your Google Cloud
 You can now import it to your file and use it on your app.
 
 ```dart
-import 'package:search_map_place/search_map_place.dart';
+import 'package:search_map_place_updated/search_map_place_updated.dart';
 ```
 
 ## How to use it
@@ -91,11 +91,6 @@ return SearchMapPlaceWidget(
 );
 ```
 
-## Future Implementations
+## Contributions
 
-There are a lot of features that can be added to this package. Here are some features I want to implement (or could be implemented by someone else):
-
-- [ ] Make the widget more personalizable
-- [ ] Make this package independent of `google_maps_flutter`
-- [ ] Allow users to close the box clicking outside of it
-- [ ] Proper widget dimensions for phones in portrait orientation or foldables.
+Every one is allowed to contribute to this project.

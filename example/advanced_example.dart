@@ -8,7 +8,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
 import 'package:search_map_place/search_map_place.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -34,7 +33,8 @@ class MapPage extends StatefulWidget {
   State<MapPage> createState() => MapSampleState();
 }
 
-class MapSampleState extends State<MapPage> with SingleTickerProviderStateMixin {
+class MapSampleState extends State<MapPage>
+    with SingleTickerProviderStateMixin {
   Completer<GoogleMapController> _mapController = Completer();
 
   String _mapStyle;
@@ -137,7 +137,8 @@ class MapSampleState extends State<MapPage> with SingleTickerProviderStateMixin 
 
                 // Using the `flutter_polyline_points` library to get the needed data to create the path.
                 PolylinePoints polylineGetter = PolylinePoints();
-                List<PointLatLng> result = await polylineGetter.getRouteBetweenCoordinates(
+                List<PointLatLng> result =
+                    await polylineGetter.getRouteBetweenCoordinates(
                   apiKEY,
                   _initialCamera.target.latitude,
                   _initialCamera.target.longitude,
@@ -148,7 +149,8 @@ class MapSampleState extends State<MapPage> with SingleTickerProviderStateMixin 
                 List<LatLng> polylineCoordinates = [];
 
                 for (var point in result) {
-                  polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+                  polylineCoordinates
+                      .add(LatLng(point.latitude, point.longitude));
                 }
 
                 // Adding marker to the selected location using a custom icon.
@@ -163,7 +165,8 @@ class MapSampleState extends State<MapPage> with SingleTickerProviderStateMixin 
                   position: geolocation.coordinates,
                 );
 
-                final GoogleMapController controller = await _mapController.future;
+                final GoogleMapController controller =
+                    await _mapController.future;
                 setState(() {
                   _selectedPlace = place;
                   _polylinePoints = polylineCoordinates;
@@ -171,8 +174,10 @@ class MapSampleState extends State<MapPage> with SingleTickerProviderStateMixin 
                 });
 
                 // Animates the Google Maps camera
-                controller.animateCamera(CameraUpdate.newLatLng(geolocation.coordinates));
-                controller.animateCamera(CameraUpdate.newLatLngBounds(geolocation.bounds, 100));
+                controller.animateCamera(
+                    CameraUpdate.newLatLng(geolocation.coordinates));
+                controller.animateCamera(
+                    CameraUpdate.newLatLngBounds(geolocation.bounds, 100));
 
                 // Animates the "start route" box in to the screen
                 _ac.forward();
@@ -230,7 +235,8 @@ class MapSampleState extends State<MapPage> with SingleTickerProviderStateMixin 
               children: <Widget>[
                 FlatButton(
                   onPressed: () {},
-                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: Text(
                     "Start Route",
                     style: TextStyle(fontSize: 16),

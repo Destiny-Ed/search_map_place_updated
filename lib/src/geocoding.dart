@@ -1,4 +1,4 @@
-part of search_map_place;
+part of search_map_place_updated;
 
 class Geocoding {
   Geocoding({this.apiKey, language = 'en'});

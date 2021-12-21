@@ -1,4 +1,4 @@
-library search_map_place;
+library search_map_place_updated;
 
 import 'package:flutter/material.dart';
 import 'dart:convert' as JSON;
