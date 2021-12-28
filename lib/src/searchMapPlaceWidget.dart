@@ -15,7 +15,7 @@ class SearchMapPlaceWidget extends StatefulWidget {
     this.radius,
     this.strictBounds = false,
     this.placeType,
-    this.darkMode = false,
+    this.bgColor = Colors.white,
     this.key,
   })  : assert((location == null && radius == null) ||
             (location != null && radius != null)),
@@ -71,7 +71,7 @@ class SearchMapPlaceWidget extends StatefulWidget {
   final Color iconColor;
 
   /// Enables Dark Mode when set to `true`. Default value is `false`.
-  final bool darkMode;
+  final Color bgColor;
 
   @override
   _SearchMapPlaceWidgetState createState() => _SearchMapPlaceWidgetState();
@@ -189,7 +189,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
               focusNode: _fn,
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.04,
-                color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+                color: widget.bgColor,
               ),
             ),
           ),
@@ -227,7 +227,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
               : "${place.replaceRange(45, place.length, "")} ...",
           style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.04,
-            color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+            color: widget.bgColor,
           ),
           maxLines: 1,
         ),
@@ -248,14 +248,14 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
       border: InputBorder.none,
       contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
       hintStyle: TextStyle(
-        color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+        color: widget.bgColor,
       ),
     );
   }
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.grey[800] : Colors.white,
+      color: widget.bgColor,
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
       boxShadow: [
         BoxShadow(color: Colors.black12, blurRadius: 20, spreadRadius: 10)

@@ -1,6 +1,5 @@
 name: search_map_place_updated_example
 description: Examples for the search_map_place_updated Package
-author: Lucas Bernardi <lucasbernardi.23@gmail.com>
 homepage: https://github.com/Bernardi23/search_map_place_updated
 
 environment:
