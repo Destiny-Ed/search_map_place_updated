@@ -193,7 +193,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
               focusNode: _fn,
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.04,
-                color: widget.bgColor,
+                color: widget.textColor,
               ),
             ),
           ),
