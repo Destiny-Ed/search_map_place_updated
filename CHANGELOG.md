@@ -5,3 +5,7 @@
 ## [0.0.2] - Dec 28, 2021
 
 * Dynamically change background color of places field
+
+## [0.0.3] - Dec 28, 2021
+
+* Dynamically change text color of places field

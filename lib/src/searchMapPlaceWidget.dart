@@ -15,7 +15,8 @@ class SearchMapPlaceWidget extends StatefulWidget {
     this.radius,
     this.strictBounds = false,
     this.placeType,
-    this.bgColor = Colors.white,
+    this.bgColor = Colors.blue,
+    this.textColor = Colors.white,
     this.key,
   })  : assert((location == null && radius == null) ||
             (location != null && radius != null)),
@@ -70,8 +71,11 @@ class SearchMapPlaceWidget extends StatefulWidget {
   /// The color of the icon to show in the search box
   final Color iconColor;
 
-  /// Enables Dark Mode when set to `true`. Default value is `false`.
+  ///  Background color for textfield
   final Color bgColor;
+
+  ///Text Color for text
+  final Color textColor;
 
   @override
   _SearchMapPlaceWidgetState createState() => _SearchMapPlaceWidgetState();
@@ -227,7 +231,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
               : "${place.replaceRange(45, place.length, "")} ...",
           style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.04,
-            color: widget.bgColor,
+            color: widget.textColor,
           ),
           maxLines: 1,
         ),
@@ -248,7 +252,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
       border: InputBorder.none,
       contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
       hintStyle: TextStyle(
-        color: widget.bgColor,
+        color: widget.textColor,
       ),
     );
   }
