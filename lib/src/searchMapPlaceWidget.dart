@@ -383,4 +383,11 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
     _fn.dispose();
     super.dispose();
   }
+  
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted){
+      super.setState(fn);
+    }
+  }
 }
