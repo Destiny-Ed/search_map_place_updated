@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:search_map_place/search_map_place.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:search_map_place_updated/search_map_place_updated.dart';
 
-String apiKEY;
+String? apiKEY;
 
 void main() => runApp(MyApp());
 
@@ -48,15 +48,15 @@ class MapSampleState extends State<MapSample> {
             top: 60,
             left: MediaQuery.of(context).size.width * 0.05,
             child: SearchMapPlaceWidget(
-              apiKey: apiKEY,
+              apiKey: apiKEY ?? "",
               onSelected: (place) async {
                 final geolocation = await place.geolocation;
                 final GoogleMapController controller =
                     await _mapController.future;
                 controller.animateCamera(
-                    CameraUpdate.newLatLng(geolocation.coordinates));
+                    CameraUpdate.newLatLng(geolocation?.coordinates));
                 controller.animateCamera(
-                    CameraUpdate.newLatLngBounds(geolocation.bounds, 0));
+                    CameraUpdate.newLatLngBounds(geolocation?.bounds, 0));
               },
             ),
           ),

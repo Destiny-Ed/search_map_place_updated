@@ -3,7 +3,8 @@ description: Examples for the search_map_place_updated Package
 homepage: https://github.com/Bernardi23/search_map_place_updated
 
 environment:
-  sdk: ">=2.5.2 <3.0.0"
+  sdk: ^3.6.0
+  flutter: '>=3.3.0'
 
 dependencies:
   search_map_place_updated:

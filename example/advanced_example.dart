@@ -8,11 +8,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:search_map_place/search_map_place.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:search_map_place_updated/search_map_place_updated.dart';
 
 const String apiKEY = "";
 
@@ -37,14 +37,14 @@ class MapSampleState extends State<MapPage>
     with SingleTickerProviderStateMixin {
   Completer<GoogleMapController> _mapController = Completer();
 
-  String _mapStyle;
+  String? _mapStyle;
   List<LatLng> _polylinePoints = [];
   Set<Marker> _markers = {};
 
-  AnimationController _ac;
-  Animation<Offset> _animation;
+  late AnimationController _ac;
+  late Animation<Offset> _animation;
 
-  Place _selectedPlace;
+  Place? _selectedPlace;
 
   final CameraPosition _initialCamera = CameraPosition(
     target: LatLng(-20.3000, -40.2990),
@@ -90,7 +90,7 @@ class MapSampleState extends State<MapPage>
                 Polyline(
                   polylineId: PolylineId('path'),
                   points: _polylinePoints,
-                  color: Colors.teal[200].withOpacity(0.8),
+                  color: Colors.teal[200]!.withOpacity(0.8),
                   endCap: Cap.roundCap,
                   geodesic: true,
                   jointType: JointType.round,
@@ -128,7 +128,7 @@ class MapSampleState extends State<MapPage>
               apiKey: apiKEY,
               icon: IconData(0xE8BD, fontFamily: 'feather'),
               // clearIcon: IconData(0xE8F6, fontFamily: 'feather'),
-              iconColor: Colors.teal[200].withOpacity(0.8),
+              iconColor: Colors.teal[200]!.withOpacity(0.8),
               // placeType: PlaceType.establishment,
               location: _initialCamera.target,
               radius: 30000,
@@ -137,18 +137,17 @@ class MapSampleState extends State<MapPage>
 
                 // Using the `flutter_polyline_points` library to get the needed data to create the path.
                 PolylinePoints polylineGetter = PolylinePoints();
-                List<PointLatLng> result =
-                    await polylineGetter.getRouteBetweenCoordinates(
+                final result = await polylineGetter.getRouteBetweenCoordinates(
                   apiKEY,
-                  _initialCamera.target.latitude,
-                  _initialCamera.target.longitude,
-                  geolocation.coordinates.latitude,
-                  geolocation.coordinates.longitude,
+                  PointLatLng(geolocation?.coordinates.latitude,
+                      geolocation?.coordinates.longitude),
+                  PointLatLng(_initialCamera.target.latitude,
+                      _initialCamera.target.longitude),
                 );
 
                 List<LatLng> polylineCoordinates = [];
 
-                for (var point in result) {
+                for (var point in result.points) {
                   polylineCoordinates
                       .add(LatLng(point.latitude, point.longitude));
                 }
@@ -162,7 +161,7 @@ class MapSampleState extends State<MapPage>
                     ),
                     'assets/pin.png',
                   ),
-                  position: geolocation.coordinates,
+                  position: geolocation?.coordinates,
                 );
 
                 final GoogleMapController controller =
@@ -175,9 +174,9 @@ class MapSampleState extends State<MapPage>
 
                 // Animates the Google Maps camera
                 controller.animateCamera(
-                    CameraUpdate.newLatLng(geolocation.coordinates));
+                    CameraUpdate.newLatLng(geolocation?.coordinates));
                 controller.animateCamera(
-                    CameraUpdate.newLatLngBounds(geolocation.bounds, 100));
+                    CameraUpdate.newLatLngBounds(geolocation?.bounds, 100));
 
                 // Animates the "start route" box in to the screen
                 _ac.forward();
@@ -215,9 +214,9 @@ class MapSampleState extends State<MapPage>
           children: <Widget>[
             Text(
               (_selectedPlace != null)
-                  ? (_selectedPlace.description.length < 25
-                      ? "${_selectedPlace.description}"
-                      : "${_selectedPlace.description.replaceRange(25, _selectedPlace.description.length, "")} ...")
+                  ? ((_selectedPlace?.description?.length ?? 0) < 25
+                      ? "${_selectedPlace?.description}"
+                      : "${_selectedPlace?.description?.replaceRange(25, (_selectedPlace?.description?.length ?? 0), "")} ...")
                   : "",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -233,15 +232,15 @@ class MapSampleState extends State<MapPage>
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   onPressed: () {},
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   child: Text(
                     "Start Route",
                     style: TextStyle(fontSize: 16),
                   ),
-                  color: Colors.teal[200].withOpacity(0.8),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          WidgetStateColor.resolveWith((_) => Colors.teal)),
                 ),
               ],
             ),
