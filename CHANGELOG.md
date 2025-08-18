@@ -9,3 +9,7 @@
 ## [0.0.4] - Dec 28, 2021
 
 * Dynamically change text color of places field
+
+## [2.0.0] - Aug 18, 2025
+
+* Updated to Null-Safety
