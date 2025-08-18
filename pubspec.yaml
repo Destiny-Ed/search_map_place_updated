@@ -1,7 +1,7 @@
 name: search_map_place_updated
 description: A Search Widget that allows users to search for a place while getting autocompletion feedback. This package is an improvement of search_map_place package.
-version: 0.0.4
-homepage: https://github.com/Destiny-Ed/search_map_place_updated_updated
+version: 0.0.5
+homepage: https://github.com/Destiny-Ed/search_map_place_updated
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
